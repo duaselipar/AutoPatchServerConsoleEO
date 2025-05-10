@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35919.96 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoPatchServer", "AutoPatchServer\AutoPatchServer.csproj", "{C2D4838E-9319-40B4-A28C-AFD3E9C98856}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoPatchServerConsole", "AutoPatchServerConsole\AutoPatchServerConsole.csproj", "{C2D4838E-9319-40B4-A28C-AFD3E9C98856}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,7 +6,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-class AutoPatchServer
+class AutoPatchServerConsole
 {
     static void PrintBanner()
     {
