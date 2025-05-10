@@ -25,24 +25,9 @@ Create a file named `ServerConfig.ini`:
 [config]
 latest_patch=2102
 listen_port=13532
-autorun=True
 web_hostname=knightfall.servegame.com
 web_port=8880
 web_path=patches
-```
-
----
-
-## 🚀 Usage
-
-```bash
-dotnet run
-```
-
-Or compile with:
-
-```bash
-dotnet build -c Release
 ```
 
 ---
@@ -52,26 +37,13 @@ dotnet build -c Release
 ```text
 [04:09:24] [INFO] Load Config Success
 [04:09:24] [INFO] Autopatch Server started on port 13532
-[04:09:24] [INFO] Server IP/Host : knightfall.servegame.com | 124.13.225.140
+[04:09:24] [INFO] Server IP/Host : yourserver.com | 124.33.454.231
 [04:09:24] [INFO] Website Port : 8880
 [04:09:24] [INFO] Latest Version : 2102
 [04:09:24] [INFO] Patch folder : patches
-[04:09:24] [INFO] Client will patch from http://knightfall.servegame.com:8880/patches/2102.exe
+[04:09:24] [INFO] Client will patch from http://yourserver.com:8880/patches/2102.exe
 ```
 
----
-
-## 📂 Folder Structure
-
-```
-AutoPatchServerConsole/
-├── Program.cs
-├── ServerConfig.ini
-├── log/
-│   └── log-YYYY-MM-DD.txt
-├── AutoPatchServerConsole.csproj
-└── README.md
-```
 
 ---
 
