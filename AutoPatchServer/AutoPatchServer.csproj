@@ -5,6 +5,14 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <ApplicationIcon>server_rack_telecommunications_data_server_network_devices_data_center_icon_193945.ico</ApplicationIcon>
+				<PublishSingleFile>true</PublishSingleFile>
+		<SelfContained>false</SelfContained> <!-- Optional: Include the .NET runtime -->
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="server_rack_telecommunications_data_server_network_devices_data_center_icon_193945.ico" />
+  </ItemGroup>
 
 </Project>

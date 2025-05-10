@@ -8,8 +8,25 @@ using System.Text.RegularExpressions;
 
 class AutoPatchServer
 {
+    static void PrintBanner()
+    {
+        Console.Title = "Auto Patch Server EO by DuaSelipar";
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(@"
+  ____              ____       _ _                  
+ |  _ \ _   _  __ _/ ___|  ___| (_)_ __   __ _ _ __ 
+ | | | | | | |/ _` \___ \ / _ \ | | '_ \ / _` | '__|
+ | |_| | |_| | (_| |___) |  __/ | | |_) | (_| | |   
+ |____/ \__,_|\__,_|____/ \___|_|_| .__/ \__,_|_|   
+                                  |_|              
+");
+        Console.ResetColor();
+    }
+
     static void Main()
     {
+        PrintBanner(); // <- here!
+
         var config = ReadConfig("ServerConfig.ini");
         LogInfo("Load Config Success");
 
@@ -27,6 +44,7 @@ class AutoPatchServer
         LogInfo($"Autopatch Server started on port {port}");
         LogInfo($"Server IP/Host : {(hostname == resolvedIP ? resolvedIP : $"{hostname} | {resolvedIP}")}");
         LogInfo($"Latest Version : {latestVersion}");
+        LogInfo($"Website Port : {webPort}");
         LogInfo($"Patch folder : {path}");
         LogInfo($"Client will patch from {patchURL}");
 
@@ -137,8 +155,33 @@ class AutoPatchServer
     static void LogColored(string tag, string message, ConsoleColor color)
     {
         string timestamp = $"[{DateTime.Now:HH:mm:ss}]";
+        string fullLine = $"{timestamp} [{tag}] {message}";
+
+        // Tulis ke console dengan warna
         Console.ForegroundColor = color;
-        Console.WriteLine($"{timestamp} [{tag}] {message}");
+        Console.WriteLine(fullLine);
         Console.ResetColor();
+
+        // Simpan ke fail log
+        WriteLogFile(fullLine);
     }
+
+    static void WriteLogFile(string line)
+    {
+        try
+        {
+            string logFolder = "log";
+            if (!Directory.Exists(logFolder))
+                Directory.CreateDirectory(logFolder);
+
+            string logFile = Path.Combine(logFolder, $"log-{DateTime.Now:yyyy-MM-dd}.txt");
+            File.AppendAllText(logFile, line + Environment.NewLine);
+        }
+        catch
+        {
+            // fail silently if write fails
+        }
+    }
+
+
 }
