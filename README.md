@@ -28,7 +28,7 @@ Create a file named `ServerConfig.ini`:
 latest_patch=2102
 listen_port=13532
 web_hostname=knightfall.servegame.com
-web_port=8880
+web_port=80
 web_path=patches
 ```
 
