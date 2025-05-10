@@ -38,12 +38,12 @@ web_path=patches
 
 ```text
 [04:09:24] [INFO] Load Config Success
-[04:09:24] [INFO] Autopatch Server started on port 13532
-[04:09:24] [INFO] Server IP/Host : yourserver.com | 124.33.454.231
-[04:09:24] [INFO] Website Port : 8880
-[04:09:24] [INFO] Latest Version : 2102
+[04:09:24] [INFO] Autopatch Server started on port 9528
+[04:09:24] [INFO] Server IP/Host : yourserver.com | 111.11.111.111
+[04:09:24] [INFO] Website Port : 80
+[04:09:24] [INFO] Latest Version : 1002
 [04:09:24] [INFO] Patch folder : patches
-[04:09:24] [INFO] Client will patch from http://yourserver.com:8880/patches/2102.exe
+[04:09:24] [INFO] Client will patch from http://yourserver.com:80/patches/1002.exe
 ```
 
 
