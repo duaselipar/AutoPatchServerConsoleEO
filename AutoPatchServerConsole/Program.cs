@@ -25,7 +25,7 @@ class AutoPatchServerConsole
 
     static void Main()
     {
-        PrintBanner(); // <- here!
+        PrintBanner();
 
         var config = ReadConfig("ServerConfig.ini");
         LogInfo("Load Config Success");
@@ -72,14 +72,18 @@ class AutoPatchServerConsole
 
                 LogClient($"{remoteEP?.Address}:{remoteEP?.Port} version: {clientVersion}");
 
-                if (clientVersion == latestVersion)
+                int clientVer = int.Parse(clientVersion);
+                int serverVer = int.Parse(latestVersion);
+                int nextPatch = clientVer + 1;
+
+                if (nextPatch > serverVer)
                 {
                     SendMessage(stream, "READY");
                 }
                 else
                 {
                     string updateHost = (webPort == "80") ? hostname : $"{hostname}:{webPort}";
-                    string updateMsg = $"UPDATE {updateHost} {path}/{latestVersion}.exe";
+                    string updateMsg = $"UPDATE {updateHost} {path}/{nextPatch}.exe";
                     SendMessage(stream, updateMsg);
                 }
             }
@@ -157,12 +161,10 @@ class AutoPatchServerConsole
         string timestamp = $"[{DateTime.Now:HH:mm:ss}]";
         string fullLine = $"{timestamp} [{tag}] {message}";
 
-        // Tulis ke console dengan warna
         Console.ForegroundColor = color;
         Console.WriteLine(fullLine);
         Console.ResetColor();
 
-        // Simpan ke fail log
         WriteLogFile(fullLine);
     }
 
@@ -179,9 +181,7 @@ class AutoPatchServerConsole
         }
         catch
         {
-            // fail silently if write fails
+            // Fail silently
         }
     }
-
-
 }
