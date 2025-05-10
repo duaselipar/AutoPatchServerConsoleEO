@@ -7,8 +7,10 @@ It listens for client version requests and tells the client whether to start the
 
 ## ✨ Features
 
-- TCP-based version handshake on custom port (default: `13532`)
+- TCP-based version handshake on custom port
 - Patch info sent via HTTP (custom domain and port supported)
+- Smart patch delivery based on version difference (e.g. 1000 → 1001 → so on)
+- Strict version validation (only numbers between 1000–99999 are accepted)
 - Input sanitization to block malformed/bot packets
 - INI configuration support (`ServerConfig.ini`)
 - Colored console output with timestamps
