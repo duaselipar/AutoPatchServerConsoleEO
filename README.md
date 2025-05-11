@@ -9,10 +9,11 @@ It listens for client version requests and tells the client whether to start the
 
 - TCP-based version handshake on custom port
 - Patch info sent via HTTP (custom domain and port supported)
-- Smart patch delivery based on version difference (e.g. 1000 → 1001 → so on)
+- Smart patch delivery (client version → next patch → next until up-to-date)
 - Strict version validation (only numbers between 1000–99999 are accepted)
 - Input sanitization to block malformed/bot packets
 - INI configuration support (`ServerConfig.ini`)
+- Live uptime indicator and connection logs
 - Colored console output with timestamps
 - Auto log to daily file (`log/log-YYYY-MM-DD.txt`)
 - Banner branding + customizable console title
