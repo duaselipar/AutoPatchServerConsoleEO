@@ -5,12 +5,16 @@ using System.Net.Sockets;
 using System.Text;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 class AutoPatchServerConsole
 {
+    static System.Diagnostics.Stopwatch uptime = new();
+    static Timer titleTimer;
+
     static void PrintBanner()
     {
-        Console.Title = "Auto Patch Server EO by DuaSelipar";
+        Console.Title = "Auto Patch Server EO by DuaSelipar | Online Time: 00:00:00";
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(@"
   ____              ____       _ _                  
@@ -18,7 +22,10 @@ class AutoPatchServerConsole
  | | | | | | |/ _` \___ \ / _ \ | | '_ \ / _` | '__|
  | |_| | |_| | (_| |___) |  __/ | | |_) | (_| | |   
  |____/ \__,_|\__,_|____/ \___|_|_| .__/ \__,_|_|   
-                                  |_|              
+                                  |_|             
+
+Facebook : https://www.facebook.com/profile.php?id=61554036273018
+Source Code : https://github.com/duaselipar/AutoPatchServerConsoleEO
 ");
         Console.ResetColor();
     }
@@ -26,6 +33,8 @@ class AutoPatchServerConsole
     static void Main()
     {
         PrintBanner();
+        uptime.Start();
+        titleTimer = new Timer(UpdateTitle, null, 0, 1000);
 
         var config = ReadConfig("ServerConfig.ini");
         LogInfo("Load Config Success");
@@ -90,6 +99,12 @@ class AutoPatchServerConsole
         }
     }
 
+    static void UpdateTitle(object state)
+    {
+        TimeSpan online = uptime.Elapsed;
+        Console.Title = $"Auto Patch Server EO by DuaSelipar | Online Time: {online:hh\\:mm\\:ss}";
+    }
+
     static void SendMessage(NetworkStream stream, string msg)
     {
         byte[] data = Encoding.ASCII.GetBytes(msg + "\0");
@@ -152,7 +167,7 @@ class AutoPatchServerConsole
 
     // === LOGGING ===
     static void LogInfo(string msg) => LogColored("INFO", msg, ConsoleColor.Green);
-    static void LogClient(string msg) => LogColored("CLIENT", msg, ConsoleColor.Cyan);
+    static void LogClient(string msg) => LogColored("CLIENT", msg, ConsoleColor.DarkCyan); // softened color
     static void LogDrop(string msg) => LogColored("DROP", msg, ConsoleColor.Red);
     static void LogError(string msg) => LogColored("ERROR", msg, ConsoleColor.Red);
 
