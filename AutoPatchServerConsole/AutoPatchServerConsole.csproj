@@ -9,6 +9,7 @@
 				<PublishSingleFile>true</PublishSingleFile>
 		<SelfContained>false</SelfContained> <!-- Optional: Include the .NET runtime -->
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<AssemblyName>Auto Patch Server</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
